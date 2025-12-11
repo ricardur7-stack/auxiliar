@@ -1,0 +1,262 @@
+<<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUXILIO BY @RARE CHEATS</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .panel {
+      position: relative;
+      z-index: 1;
+      background: #0d0d0d;
+      border-radius: 14px;
+      padding: 20px;
+      width: 90%;
+      max-width: 340px;
+      box-shadow: 0 0 25px rgba(255,0,0,0.5);
+      border: 1px solid #ff0000;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #ffffff; /* título branco */
+      text-shadow: 0 0 8px #ff0000;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
+      border-radius: 2px;
+      margin: 12px 0 15px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 6px;
+      background: #222;
+      margin: 0 4px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      border: 1px solid #ff0000;
+      transition: 0.2s;
+    }
+
+    .tab:hover { background: #333; }
+
+    .tab.active {
+      background: #ff0000;
+      border-color: #ff0000;
+    }
+
+    .content { display: none; }
+    .content.active { display: block; }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      accent-color: #ff0000;
+      margin-right: 8px;
+      transform: scale(1.3);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      margin: 10px 0;
+      outline: none;
+      border: 1px solid #ff0000;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #ff0000;
+      cursor: pointer;
+    }
+
+    select {
+      width: 100%;
+      padding: 6px;
+      border-radius: 6px;
+      border: 2px solid #ff0000;
+      background: #111;
+      color: white;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: #ff0000;
+      border: none;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255,0,0,0.6);
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #cc0000;
+    }
+
+    .info p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="panel">
+    <h2>AUXILIO BY @RARE CHEATS</h2>
+    <div class="divider"></div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('aimbot', this)">Aimbot</div>
+      <div class="tab" onclick="showTab('info', this)">Info</div>
+    </div>
+
+    <!-- AIMBOT -->
+    <div id="aimbot" class="content active">
+      <label><input type="checkbox"> Ativar Auxílio</label>
+      <label><input type="checkbox"> Ativar Fov</label>
+
+      <input type="range" min="0" max="100" value="0" id="fovRange">
+      <p>Fov: <span id="fovValue">0</span></p>
+
+      <select>
+        <option>Auxílio Head</option>
+        <option>Auxílio Body</option>
+        <option>Auxílio Full</option>
+      </select>
+
+      <div class="divider"></div>
+
+      <p>Tipo de Aimbot:</p>
+      <label><input type="radio" name="tipo"> Ao Atirar</label>
+      <label><input type="radio" name="tipo"> Ao Olhar</label>
+    </div>
+
+    <!-- INFO -->
+    <div id="info" class="content info">
+      <p><b>Dispositivo:</b> <span id="modelo"></span></p>
+      <p><b>Key:</b> <span id="key"></span></p>
+
+      <div class="divider"></div>
+
+      <p><b>Dicas:</b> Ative as funções no modo treinamento.</p>
+    </div>
+
+    <button class="btn" onclick="abrirJogo()">INJETAR FUNÇÕES NO JOGO</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <script>
+    // Tabs
+    function showTab(id, el) {
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Slider FOV
+    const fovRange = document.getElementById("fovRange");
+    const fovValue = document.getElementById("fovValue");
+    fovRange.oninput = () => fovValue.textContent = fovRange.value;
+
+    // Detectar dispositivo
+    function getDeviceName() {
+      const ua = navigator.userAgent;
+      if (/iPhone/i.test(ua)) return "iPhone";
+      if (/iPad/i.test(ua)) return "iPad";
+      if (/Android/i.test(ua)) return "Android";
+      if (/Windows/i.test(ua)) return "Windows";
+      if (/Macintosh/i.test(ua)) return "Mac";
+      return "Desconhecido";
+    }
+    document.getElementById("modelo").textContent = getDeviceName();
+
+    // Key fixa
+    document.getElementById("key").textContent = "auxiliorarecheats";
+
+    // Abrir jogo
+    function abrirJogo() {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.dts.freefireth";
+    }
+
+    // Partículas (agora vermelho)
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 55 },
+        color: { value: "#ff0000" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 4 },
+        line_linked: {
+          enable: true,
+          distance: 160,
+          color: "#ff0000",
+          opacity: 0.6,
+          width: 1.5
+        },
+        move: { enable: true, speed: 2.5, out_mode: "bounce" }
+      }
+    });
+  </script>
+
+</body>
+</html>
