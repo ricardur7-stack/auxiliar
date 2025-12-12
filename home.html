@@ -196,8 +196,24 @@
 
       <p><b>Dicas:</b> Ative as funções no modo treinamento.</p>
     </div>
+<button class="btn" onclick="abrirJogo()">ABRIR JOGO</button>
 
-    <button class="btn" onclick="abrirJogo()">INJETAR FUNÇÕES NO JOGO</button>
+<script>
+function abrirJogo() {
+  // iPhone
+  window.location = "garena://ff/";
+
+  // Android fallback:
+  setTimeout(() => {
+    window.location = "intent://com.dts.freefireth#Intent;scheme=android-app;end";
+  }, 500);
+
+  // Se não tiver o jogo, abre a loja:
+  setTimeout(() => {
+    window.location = "https://play.google.com/store/apps/details?id=com.dts.freefireth";
+  }, 1000);
+}
+</script>
   </div>
 
   <!-- Scripts -->
@@ -231,12 +247,10 @@
     document.getElementById("modelo").textContent = getDeviceName();
 
     // Key fixa
-    document.getElementById("key").textContent = "auxiliorarecheats";
+    document.getElementById("key").textContent = "auxiliorugal";
 
-    // Abrir jogo
-    function abrirJogo() {
-      window.location.href = "https://play.google.com/store/apps/details?id=com.dts.freefireth";
-    }
+    // Abrir jogocom.dts.freefireth";
+    
 
     // Partículas (agora vermelho)
     particlesJS("particles-js", {
