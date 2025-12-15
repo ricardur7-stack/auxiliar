@@ -28,10 +28,10 @@
       box-shadow: 0 0 20px rgba(255,0,0,0.5);
       border: 1px solid #ff0000;
       z-index: 2;
+      text-align: center;
     }
 
     h2 {
-      text-align: center;
       margin: 0 0 15px;
       font-size: 22px;
       color: #fff;
@@ -42,29 +42,12 @@
       height: 2px;
       background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
       border-radius: 2px;
-      margin: 12px 0 20px;
-    }
-
-    .input-box {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .input-box input {
-      width: 100%;
-      padding: 12px;
-      background: #111;
-      border: 1px solid #ff0000;
-      border-radius: 8px;
-      color: white;
-      font-size: 15px;
-      outline: none;
+      margin: 12px 0 25px;
     }
 
     .btn {
       width: 100%;
       padding: 14px;
-      margin-top: 10px;
       background: #ff0000;
       border: none;
       color: white;
@@ -76,9 +59,10 @@
       transition: 0.2s;
     }
 
-    .btn:hover { background: #cc0000; }
+    .btn:hover {
+      background: #cc0000;
+    }
 
-    /* Fundo */
     .background {
       position: fixed;
       z-index: 1;
@@ -92,7 +76,6 @@
       from { filter: blur(3px); opacity: 0.6; }
       to   { filter: blur(1px); opacity: 1; }
     }
-
   </style>
 </head>
 <body>
@@ -103,45 +86,13 @@
   <h2>RUGAL XITER @RARECHEATS</h2>
   <div class="divider"></div>
 
-  <div class="input-box">
-    <input type="text" id="user" placeholder="Usuário">
-  </div>
-
-  <div class="input-box">
-    <input type="password" id="key" placeholder="Digite sua KEY">
-  </div>
-
-  <button class="btn" onclick="login()">ENTRAR</button>
-
-  <p id="status" style="color: #ff0000; text-align:center; margin-top:10px;"></p>
+  <button class="btn" onclick="entrar()">ACESSAR</button>
 </div>
 
 <script>
-  // ‼ Key válida (exemplo)
-  const KEY_VALIDA = "auxiliorugal";
-
-  function login() {
-    const usuario = document.getElementById("user").value.trim();
-    const key = document.getElementById("key").value.trim();
-    const status = document.getElementById("status");
-
-    if (!usuario || !key) {
-      status.textContent = "Preencha todos os campos.";
-      return;
-    }
-
-    if (key !== KEY_VALIDA) {
-      status.textContent = "KEY incorreta.";
-      return;
-    }
-
-    status.style.color = "#0f0";
-    status.textContent = "Acessando...";
-
-    setTimeout(() => {
-      // você pode colocar a página que quiser aqui
-      window.location.href = "home.html";
-    }, 1000);
+  function entrar() {
+    // Redirecione para a página principal
+    window.location.href = "home.html";
   }
 </script>
 
